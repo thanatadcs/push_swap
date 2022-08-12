@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/13 04:05:03 by tanukool          #+#    #+#             */
+/*   Updated: 2022/08/13 05:06:05 by tanukool         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "stack.h"
+
+t_stack	*new_stack(void)
+{
+	t_stack	*to_return;
+
+	to_return = malloc(sizeof(t_stack));
+	if (to_return == 0)
+		return (0);
+	to_return->top = 0;
+	to_return->bot = 0;
+	return (to_return);
+}
+
+// Return new node being push in to stack s, null if error.
+t_dlist	*push(t_stack *s, int n)
+{
+	t_dlist	*new_node;
+	t_dlist	*top_node;
+
+	if (s == 0)
+		return (0);
+	new_node = malloc(sizeof(t_dlist));
+	if (new_node == 0)
+		return (0);
+	new_node->num = n;
+	new_node->front = 0;
+	new_node->back = 0;
+	if (s->top == 0)
+	{
+		s->top = new_node;
+		s->bot = new_node;
+	}
+	else
+	{
+		top_node = s->top;
+		new_node->front = top_node;
+		top_node->back = new_node;
+		s->top = new_node;
+	}
+	return (new_node);
+}
+
+// Return an interger pop from the stack.
+int	pop(t_stack *s)
+{
+	t_dlist	*pop_node;
+	int		to_return;
+
+	if (s == 0 || s->top == 0)
+		return (0);
+	pop_node = s->top;
+	to_return = pop_node->num;
+	s->top = s->top->front;
+	if (s->top != 0)
+		s->top->back = 0;
+	free(pop_node);
+	return (to_return);
+}
+
+// Return number of node being pop from stack s, -1 if error.
+int	pop_all(t_stack *s)
+{
+	int		pop_count;
+
+	if (s == 0 || s->top == 0)
+		return (0);
+	pop_count = 0;
+	while (s->top)
+	{
+		pop(s);
+		pop_count++;
+	}
+	return (pop_count);
+}
