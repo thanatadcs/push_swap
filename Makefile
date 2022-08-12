@@ -6,13 +6,14 @@
 #    By: tanukool <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 04:05:43 by tanukool          #+#    #+#              #
-#    Updated: 2022/08/13 04:44:59 by tanukool         ###   ########.fr        #
+#    Updated: 2022/08/13 05:14:58 by tanukool         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I.
 
+HEADER = stack.h
 SRC = stack.c
 OBJ = $(SRC:%.c=%.o)
 
@@ -25,8 +26,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
+t: norm test
+
 test: $(OBJ) test.o
 	@$(CC) $(CFLAGS) $^ -o $@ && ./$@ && $(LEAKS) ./$@ 2> /dev/null | grep 'leak' && rm -f $^ $@
+
+norm:
+	norminette $(SRC) $(HEADER)
 
 clean:
 	rm -f $(OBJ)
@@ -36,4 +42,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test norm
