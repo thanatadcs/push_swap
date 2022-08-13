@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:26:54 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/13 12:34:18 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:34:49 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_stack
 {
 	t_dlist	*top;
 	t_dlist	*bot;
+	size_t	size;
 }	t_stack;
 
 t_stack	*new_stack(void);

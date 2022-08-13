@@ -4,7 +4,10 @@
 void multi_push(t_stack *s, int *arr, int n)
 {
 	for (int i=0;i<n;i++)
+	{
 		push(s, arr[i]);
+		printf("push: %d, size: %zu\n", arr[i], s->size);
+	}
 }
 
 int	main(void)
@@ -18,7 +21,7 @@ int	main(void)
 	for (int i=0;i<N + 1;i++)
 	{
 		if (a->top != 0)
-			printf("%d ", pop(a));
+			printf("pop: %d, size: %zu\n", pop(a), a->size);
 	}
 	printf("\n");
 

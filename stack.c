@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 04:05:03 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/13 12:23:33 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:37:19 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*new_stack(void)
 		return (0);
 	to_return->top = 0;
 	to_return->bot = 0;
+	to_return->size = 0;
 	return (to_return);
 }
 
@@ -50,6 +51,7 @@ t_dlist	*push(t_stack *s, int n)
 		top_node->back = new_node;
 		s->top = new_node;
 	}
+	(s->size)++;
 	return (new_node);
 }
 
@@ -67,6 +69,7 @@ int	pop(t_stack *s)
 	if (s->top != 0)
 		s->top->back = 0;
 	free(pop_node);
+	(s->size)--;
 	return (to_return);
 }
 
@@ -83,6 +86,7 @@ int	pop_all(t_stack *s)
 		pop(s);
 		pop_count++;
 	}
+	s->size -= pop_count;
 	return (pop_count);
 }
 
