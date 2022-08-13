@@ -1,4 +1,5 @@
 #include "stack.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 #define GREEN "\033[0;32m"
