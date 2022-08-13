@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 04:05:03 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/13 05:06:05 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:23:33 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,23 @@ int	pop_all(t_stack *s)
 		pop_count++;
 	}
 	return (pop_count);
+}
+
+t_dlist	*get_node_at(t_stack *s, size_t position)
+{
+	size_t	i;
+	t_dlist	*cur_node;
+
+	if (s == 0 || s->top == 0)
+		return (0);
+	i = 0;
+	cur_node = s->top;
+	while (cur_node->front && i < position)
+	{
+		cur_node = cur_node->front;
+		i++;
+	}
+	if (i != position)
+		return (0);
+	return (cur_node);
 }
