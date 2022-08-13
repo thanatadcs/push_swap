@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 04:05:03 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/13 12:37:19 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:58:08 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	pop(t_stack *s)
 	s->top = s->top->front;
 	if (s->top != 0)
 		s->top->back = 0;
+	else
+		s->bot = 0;
 	free(pop_node);
 	(s->size)--;
 	return (to_return);
