@@ -1,4 +1,6 @@
+#include "libft.h"
 #include "stack.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 #define GREEN "\033[0;32m"
@@ -44,7 +46,7 @@ void test_basic_stack_ops(void)
 	int	in[] = {1, 2, 3};
 	t_stack *a = new_stack();
 
-	printf("TEST BASIC STACK OPERATIONS\n");
+	printf("-- TEST BASIC STACK OPERATIONS --\n");
 	// Push
 	printf("PUSH TEST: ");
 	int_eq((uintptr_t)push(0, 1), 0);
@@ -129,9 +131,10 @@ void test_basic_stack_ops(void)
 	free(a);
 }
 
-void	test_push_swap_ops(void)
+void	test_additional_stack_ops(void)
 {
 	// get_strs_stack
+	printf("-- TEST ADDITIONAL STACK OPERATIONS --\n");
 	printf("TEST GET STACK FROM STRS: ");
 	char *strs[] = {"1", "2", "3"};
 	t_stack *a = get_stack_strs(strs, 3);
@@ -289,8 +292,46 @@ void	test_push_swap_ops(void)
 	printf("\n");
 }
 
+void test_push_swap_utils(void)
+{
+	// is_int
+	printf("-- TEST PUSH SWAP UTILS --\n");
+	char *s;
+	printf("TEST IS INT: ");
+	for (long i = -1000000000; i <= 1000000000; i+=1013)
+	{
+		s = ft_itoa(i);
+		if (!is_int(s))
+		{
+			free(s);
+			printf("%s ", RED"FAIL"RESET);
+			return ;
+		}
+		free(s);
+	}
+	printf("%s ", GREEN"PASS"RESET);
+
+	int_eq(is_int("10000000000"), 0);
+	int_eq(is_int("-10000000000"), 0);
+	int_eq(is_int("2147483647"), 1);
+	int_eq(is_int("-2147483648"), 1);
+	int_eq(is_int("2147483646"), 1);
+	int_eq(is_int("-2147483647"), 1);
+	int_eq(is_int("2147483649"), 0);
+	int_eq(is_int("-2147483649"), 0);
+
+	printf("\n");
+
+	// is_valid
+	printf("TEST IS VALID: ");
+	char *a[] = {"1", "2", "3", "4"};
+	(void) a;
+	printf("\n");
+}
+
 int	main(void)
 {
 	test_basic_stack_ops();
-	test_push_swap_ops();
+	test_additional_stack_ops();
+	test_push_swap_utils();
 }

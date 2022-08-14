@@ -6,12 +6,11 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 04:05:03 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/14 10:34:09 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/15 01:53:06 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
-#include <stdio.h>
 
 t_stack	*new_stack(void)
 {
