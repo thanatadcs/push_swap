@@ -1,16 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_ops.c                                    :+:      :+:    :+:   */
+/*   stack2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:21 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/14 00:33:27 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:44:16 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+
+t_stack	*get_stack_strs(char **strs, int n)
+{
+	int		i;
+	t_stack	*to_return;
+
+	if (strs == 0)
+		return (0);
+	to_return = new_stack();
+	if (to_return == 0)
+		return (0);
+	i = n;
+	while (i > 0)
+	{
+		if (push(to_return, ft_atoi(strs[--i])) == 0)
+		{
+			pop_all(to_return);
+			free(to_return);
+			return (0);
+		}
+	}
+	return (to_return);
+}
 
 // Return 1 if successfully, 0 otherwise
 int	swap(t_stack *s)
@@ -28,8 +51,11 @@ int	swap(t_stack *s)
 	first->back = second;
 	second->front = first;
 	second->back = 0;
+	s->top = second;
 	if (third != 0)
 		third->back = first;
+	else
+		s->bot = first;
 	return (1);
 }
 

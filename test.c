@@ -1,5 +1,4 @@
 #include "stack.h"
-#include "push_swap.h"
 #include <stdio.h>
 
 #define GREEN "\033[0;32m"
@@ -113,9 +112,36 @@ void test_basic_stack_ops(void)
 
 void	test_push_swap_ops(void)
 {
+	// get_strs_stack
+	printf("TEST GET STACK FROM STRS: ");
+	char *strs[] = {"1", "2", "3"};
+	t_stack *a = get_stack_strs(strs, 3);
+	int_eq(pop(a), 1);	
+	int_eq(pop(a), 2);	
+	int_eq(pop(a), 3);	
+	int_eq(pop(a), 0);
+	free(a);
+	printf("\n");
+
+	// swap
+	printf("TEST SWAP: ");
+	a = get_stack_strs(strs, 3);
+	int_eq(get_node_at(a, 0)->num, 1);
+	swap(a);
+	int_eq(get_node_at(a, 0)->num, 2);
+	swap(a);
+	int_eq(get_node_at(a, 0)->num, 1);
+	printf("\n");
+
+	// pop_push
+	printf("TEST POP PUSH: ");
+	t_stack *b = new_stack();
+	(void) b;
+	printf("\n");
 }
 
 int	main(void)
 {
 	test_basic_stack_ops();
+	test_push_swap_ops();
 }

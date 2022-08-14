@@ -6,14 +6,14 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:26:54 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/13 12:34:49 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:43:51 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-# include <stdlib.h>
+# include "libft.h"
 
 typedef struct s_dlist
 {
@@ -29,10 +29,18 @@ typedef struct s_stack
 	size_t	size;
 }	t_stack;
 
+// stack1.c
 t_stack	*new_stack(void);
 t_dlist	*push(t_stack *s, int n);
 int		pop(t_stack *s);
 int		pop_all(t_stack *s);
 t_dlist	*get_node_at(t_stack *s, size_t position);
+
+// stack2.c
+t_stack	*get_stack_strs(char **strs, int n);
+int		swap(t_stack *s);
+int		pop_push(t_stack *s1, t_stack *s2);
+int		rotate_up(t_stack *s);
+int		rotate_down(t_stack *s);
 
 #endif
