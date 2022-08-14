@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:21 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/14 15:44:16 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/14 18:03:01 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	rotate_up(t_stack *s)
 	af_top_node = s->top->front;
 	top_node->front = 0;
 	top_node->back = bot_node;
+	bot_node->front = top_node;
 	af_top_node->back = 0;
 	s->top = af_top_node;
 	s->bot = top_node;
