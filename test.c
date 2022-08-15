@@ -18,7 +18,7 @@ void multi_push(t_stack *s, int *arr, int n)
 void	print_stack(t_stack *s)
 {
 	t_dlist *cur_node;
-	if (s == 0 || s->top == 0)
+	if (s == 0)
 		return ;
 	printf("\n-- print stack --\n");
 	cur_node = s->top;
@@ -325,7 +325,49 @@ void test_push_swap_utils(void)
 	// is_valid
 	printf("TEST IS VALID: ");
 	char *a[] = {"1", "2", "3", "4"};
-	(void) a;
+	int_eq(is_valid(a, 4), 1);
+	char *b[] = {"", "1"};
+	int_eq(is_valid(b, 2), 0);
+	char *c[] = {"11", "10", "-2147483648",  "2147483647"};
+	int_eq(is_valid(c, 4), 1);
+	char *d[] = {"11", "10", "-2147483648",  "2147483647", "2147483646"};
+	int_eq(is_valid(d, 5), 1);
+	char *e[] = {"11", "10", "-2147483648",  "2147483647", "2147483646", "11"};
+	int_eq(is_valid(e, 6), 0);
+	char *f[] = {"11", "10", "-2147483648",  "2147483647", "2147483646", "one"};
+	int_eq(is_valid(f, 6), 0);
+	printf("\n");
+}
+
+void	test_push_swap_ops(void)
+{
+	printf("-- TEST PUSH SWAP OPERATIONS ==\n");
+	printf("MIXED: ");
+	char *strs[] = {"1", "2", "3"};
+	initialize_ps(strs, 3);
+	t_stack *a = get_stack_ps('a');
+	t_stack *b = get_stack_ps('b');
+
+	ra();
+	rra();
+	int_eq(a->top->num, 1);
+	int_eq(a->top->front->num, 2);
+	int_eq(a->bot->num, 3);
+	int_eq((uintptr_t)b->top, 0);
+
+	pb();
+	pb();
+	int_eq(a->top->num, 3);
+	int_eq(a->bot->num, 3);
+	int_eq(b->top->num, 2);
+	int_eq(b->bot->num, 1);
+
+	rr();
+	int_eq(a->top->num, 3);
+	int_eq(a->bot->num, 3);
+	int_eq(b->top->num, 1);
+	int_eq(b->bot->num, 2);
+	free_ps();
 	printf("\n");
 }
 
@@ -334,4 +376,5 @@ int	main(void)
 	test_basic_stack_ops();
 	test_additional_stack_ops();
 	test_push_swap_utils();
+	test_push_swap_ops();
 }
