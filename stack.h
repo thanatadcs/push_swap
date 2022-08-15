@@ -6,15 +6,15 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:26:54 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/15 14:35:10 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:56:18 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-# include <libft.h>
 # include <stdlib.h>
+# include "libft.h"
 
 typedef struct s_dlist
 {
