@@ -6,7 +6,7 @@
 #    By: tanukool <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 04:05:43 by tanukool          #+#    #+#              #
-#    Updated: 2022/08/15 14:45:09 by tanukool         ###   ########.fr        #
+#    Updated: 2022/08/15 14:50:51 by tanukool         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I$(INCS_DIR) -I$(LIBFT_DIR)
 
 INCS_DIR = .
-HEADER = stack.h
+HEADER = stack.h push_swap.h
 
 SRC = main.c stack1.c stack2.c push_swap_utils1.c push_swap_utils2.c push_swap_utils3.c push_swap_utils4.c
 OBJ = $(SRC:%.c=%.o)
