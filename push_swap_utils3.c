@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:14:34 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 02:30:34 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 03:57:44 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 void	d(t_ps_stack stack_name)
 {
 	rotate_down(get_ps_stack(stack_name));
+	print_op("rr", stack_name);
 }
 
 void	dd(void)
 {
 	d(A);
 	d(B);
+	ft_printf("rrr\n");
 }
 
 size_t	size(t_ps_stack stack_name)

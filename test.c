@@ -339,6 +339,10 @@ void test_push_swap_utils(void)
 	char *f[] = {"11", "10", "-2147483648",  "2147483647", "2147483646", "one"};
 	int_eq(is_valid(f, 6), 0);
 	printf("\n");
+
+	print_op("s", A);
+	print_op("s", B);
+	print_op("rr", B);
 }
 
 void	test_push_swap_ops(void)
@@ -406,7 +410,7 @@ int	main(void)
 {
 	//test_basic_stack_ops();
 	//test_additional_stack_ops();
-	//test_push_swap_utils();
+	test_push_swap_utils();
 	//test_push_swap_ops();
-	test_push_swap_algo();
+	//test_push_swap_algo();
 }

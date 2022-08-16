@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 02:56:36 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:03:47 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 03:49:17 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <limits.h>
 # include <unistd.h>
+# include "ft_printf.h"
 # include "libft.h"
 # include "stack.h"
 
@@ -23,7 +24,6 @@ typedef enum e_ps_stack {A, B}	t_ps_stack;
 // push_swap.c: sorting algorithm
 int		bsort(void);
 size_t	find_min_index(t_ps_stack stack_name);
-void	check_ps_error(int is_success);
 
 // push_swap_util1.c: validating input and initializing push swap
 int		ft_strcmp(char *s1, char *s2);
@@ -45,5 +45,9 @@ void	dd(void);
 size_t	size(t_ps_stack stack_name);
 int		peek_at(t_ps_stack stack_name, size_t i);
 void	free_ps(void);
+
+// push_swap_util4.c: miscellaneous
+void	check_ps_error(int is_success);
+void	print_op(char *op_str, t_ps_stack stack_name);
 
 #endif

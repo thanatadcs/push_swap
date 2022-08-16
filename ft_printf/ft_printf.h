@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 03:10:26 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:17:49 by tanukool         ###   ########.fr       */
+/*   Created: 2022/08/10 02:23:46 by tanukool          #+#    #+#             */
+/*   Updated: 2022/08/12 01:49:04 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "push_swap.h"
-#include <unistd.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main(int ac, char **av)
-{
-	if (ac >= 2)
-	{
-		if (!is_valid(++av, ac - 1) || initialize_ps(av, ac - 1) == 0)
-		{
-			write(2, "Error\n", 6);
-			return (EXIT_FAILURE);
-		}
-		bsort();
-		free_ps();
-	}
-}
+# include <stdarg.h>
+# include <unistd.h>
+
+int	ft_putchar(char c);
+int	ft_putstr(char *s);
+int	ft_putnbr(long n);
+int	ft_puthex(uintptr_t n, int mode);
+int	ft_printf(const char *s, ...);
+
+#endif

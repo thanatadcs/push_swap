@@ -6,21 +6,11 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:05:18 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 03:46:32 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_ps_error(int is_success)
-{
-	if (!is_success)
-	{
-		write(2, "Error\n", 6);
-		free_ps();
-		exit(EXIT_FAILURE);
-	}
-}
 
 size_t	find_min_index(t_ps_stack stack_name)
 {
