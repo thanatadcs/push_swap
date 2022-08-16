@@ -6,39 +6,42 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:14:34 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/15 15:26:49 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 02:30:34 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(void)
+void	d(t_ps_stack stack_name)
 {
-	rotate_up(get_stack_ps('a'));
-	write(1, "ra\n", 3);
+	rotate_down(get_ps_stack(stack_name));
 }
 
-void	rb(void)
+void	dd(void)
 {
-	rotate_up(get_stack_ps('b'));
-	write(1, "rb\n", 3);
+	d(A);
+	d(B);
 }
 
-void	rr(void)
+size_t	size(t_ps_stack stack_name)
 {
-	ra();
-	rb();
-	write(1, "rr\n", 3);
+	return (get_ps_stack(stack_name)->size);
 }
 
-void	rra(void)
+int	peek_at(t_ps_stack stack_name, size_t i)
 {
-	rotate_down(get_stack_ps('a'));
-	write(1, "rra\n", 4);
+	return (get_int_at(get_ps_stack(stack_name), i));
 }
 
-void	rrb(void)
+void	free_ps(void)
 {
-	rotate_down(get_stack_ps('b'));
-	write(1, "rrb\n", 4);
+	t_stack	*a;
+	t_stack	*b;
+
+	a = get_ps_stack(A);
+	pop_all(a);
+	free(a);
+	b = get_ps_stack(B);
+	pop_all(b);
+	free(b);
 }

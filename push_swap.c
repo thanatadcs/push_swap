@@ -5,16 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 14:57:48 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/16 00:02:20 by tanukool         ###   ########.fr       */
+/*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
+/*   Updated: 2022/08/17 03:05:18 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
-#include <stdio.h>
 
-size_t	find_min_index(void)
+void	check_ps_error(int is_success)
+{
+	if (!is_success)
+	{
+		write(2, "Error\n", 6);
+		free_ps();
+		exit(EXIT_FAILURE);
+	}
+}
+
+size_t	find_min_index(t_ps_stack stack_name)
 {
 	int		min;
 	int		n;
@@ -23,9 +31,9 @@ size_t	find_min_index(void)
 
 	min = INT_MAX;
 	i = 0;
-	while (i < size_a())
+	while (i < size(stack_name))
 	{
-		n = peek_at('a', i);
+		n = peek_at(stack_name, i);
 		if (n < min)
 		{
 			min = n;
@@ -38,23 +46,27 @@ size_t	find_min_index(void)
 
 int	bsort(void)
 {
-	size_t	min_index;
-	size_t	initial_size_a;
+	size_t		min_index;
+	size_t		initial_size_a;
+	t_ps_stack	a;
+	t_ps_stack	b;
 
-	if (size_a() <= 1)
+	a = A;
+	b = B;
+	if (size(a) <= 1)
 		return (1);
-	initial_size_a = size_a();
-	while (size_b() < initial_size_a)
+	initial_size_a = size(a);
+	while (size(b) < initial_size_a)
 	{
-		min_index = find_min_index();
+		min_index = find_min_index(a);
 		while (min_index)
 		{
-			ra();
+			u(a);
 			min_index--;
 		}
-		pb();
+		check_ps_error(p(b));
 	}
-	while (size_b() > 0)
-		pa();
+	while (size(b) > 0)
+		check_ps_error(p(a));
 	return (1);
 }

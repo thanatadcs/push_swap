@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:26:54 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/15 14:56:18 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 01:36:26 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ typedef struct s_stack
 
 // stack1.c: basic stack operations
 t_stack	*new_stack(void);
-t_dlist	*push(t_stack *s, int n);
+int		push(t_stack *s, int n);
 int		pop(t_stack *s);
-int		pop_all(t_stack *s);
-t_dlist	*get_node_at(t_stack *s, size_t position);
+void	pop_all(t_stack *s);
+int		get_int_at(t_stack *s, size_t position);
 
 // stack2.c: additional operations for push swap operations
 t_stack	*get_stack_strs(char **strs, int n);
-int		swap(t_stack *s);
+void	swap(t_stack *s);
 int		pop_push(t_stack *s1, t_stack *s2);
-int		rotate_up(t_stack *s);
-int		rotate_down(t_stack *s);
+void	rotate_up(t_stack *s);
+void	rotate_down(t_stack *s);
 
 #endif

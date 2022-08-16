@@ -6,39 +6,37 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 10:45:21 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/15 15:27:50 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 02:29:24 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(void)
+void	s(t_ps_stack stack_name)
 {
-	swap(get_stack_ps('a'));
-	write(1, "sa\n", 3);
-}
-
-void	sb(void)
-{
-	swap(get_stack_ps('b'));
-	write(1, "ss\n", 3);
+	swap(get_ps_stack(stack_name));
 }
 
 void	ss(void)
 {
-	sa();
-	sb();
-	write(1, "ss\n", 3);
+	s(A);
+	s(B);
 }
 
-void	pa(void)
+int	p(t_ps_stack stack_name)
 {
-	pop_push(get_stack_ps('b'), get_stack_ps('a'));
-	write(1, "pa\n", 3);
+	if (stack_name == A)
+		return (pop_push(get_ps_stack(B), get_ps_stack(A)));
+	return (pop_push(get_ps_stack(A), get_ps_stack(B)));
 }
 
-void	pb(void)
+void	u(t_ps_stack stack_name)
 {
-	pop_push(get_stack_ps('a'), get_stack_ps('b'));
-	write(1, "pb\n", 3);
+	rotate_up(get_ps_stack(stack_name));
+}
+
+void	uu(void)
+{
+	u(A);
+	u(B);
 }

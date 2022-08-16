@@ -30,12 +30,12 @@ void	print_stack(t_stack *s)
 	printf("\n--  end stack  --\n");
 }
 
-void	int_eq(uintptr_t actual, uintptr_t expected)
+void	int_eq(intptr_t actual, intptr_t expected)
 {
 	printf("%s ", (actual == expected) ? GREEN"PASS"RESET : RED"FAIL"RESET);
 }
 
-void	int_neq(uintptr_t actual, uintptr_t expected)
+void	int_neq(intptr_t actual, intptr_t expected)
 {
 	printf("%s ", (actual != expected) ? GREEN"PASS"RESET : RED"FAIL"RESET);
 }
@@ -116,24 +116,24 @@ void test_basic_stack_ops(void)
 	push(a, 5);
 	push(a, 5);
 	int_eq(a->top->num, 5);
-	int_eq(pop_all(a), 5);
+	pop_all(a);
 	int_eq((uintptr_t)a->top, 0);
 	int_eq((uintptr_t)a->bot, 0);
-	int_eq(pop_all(a), 0);
+	pop_all(a);
 	printf("\n");
 
 	// Get node at
 	printf("TEST GET NODE AT: ");
 	multi_push(a, in, n);
-	int_eq(get_node_at(a, 0)->num, 3);
-	int_eq(get_node_at(a, 1)->num, 2);
-	int_eq(get_node_at(a, 2)->num, 1);
-	int_eq((uintptr_t)get_node_at(a, -1), 0);
-	int_eq((uintptr_t)get_node_at(a, 3), 0);
+	int_eq(get_int_at(a, 0), 3);
+	int_eq(get_int_at(a, 1), 2);
+	int_eq(get_int_at(a, 2), 1);
+	int_eq(get_int_at(a, -1), 0);
+	int_eq(get_int_at(a, 3), 0);
 	pop_all(a);
-	int_eq((uintptr_t)get_node_at(a, 0), 0);
-	int_eq((uintptr_t)get_node_at(a, 1), 0);
-	int_eq((uintptr_t)get_node_at(a, 2), 0);
+	int_eq(get_int_at(a, 0), 0);
+	int_eq(get_int_at(a, 1), 0);
+	int_eq(get_int_at(a, 2), 0);
 	printf("\n");
 
 	free(a);
@@ -156,28 +156,28 @@ void	test_additional_stack_ops(void)
 	// swap
 	printf("TEST SWAP: ");
 	a = get_stack_strs(strs, 3);
-	int_eq(get_node_at(a, 0)->num, 1);
-	int_eq((uintptr_t)a->top->num, 1);
-	int_eq((uintptr_t)a->bot->num, 3);
+	int_eq(get_int_at(a, 0), 1);
+	int_eq(a->top->num, 1);
+	int_eq(a->bot->num, 3);
 	swap(a);
-	int_eq(get_node_at(a, 0)->num, 2);
-	int_eq((uintptr_t)a->top->num, 2);
-	int_eq((uintptr_t)a->bot->num, 3);
+	int_eq(get_int_at(a, 0), 2);
+	int_eq(a->top->num, 2);
+	int_eq(a->bot->num, 3);
 	swap(a);
-	int_eq(get_node_at(a, 0)->num, 1);
-	int_eq((uintptr_t)a->top->num, 1);
-	int_eq((uintptr_t)a->bot->num, 3);
+	int_eq(get_int_at(a, 0), 1);
+	int_eq(a->top->num, 1);
+	int_eq(a->bot->num, 3);
 	pop(a);
-	int_eq(get_node_at(a, 0)->num, 2);
-	int_eq((uintptr_t)a->top->num, 2);
-	int_eq((uintptr_t)a->bot->num, 3);
+	int_eq(get_int_at(a, 0), 2);
+	int_eq(a->top->num, 2);
+	int_eq(a->bot->num, 3);
 	swap(a);
-	int_eq(get_node_at(a, 0)->num, 3);
-	int_eq((uintptr_t)a->top->num, 3);
-	int_eq((uintptr_t)a->bot->num, 2);
-	int_eq(swap(0), 0);
+	int_eq(get_int_at(a, 0), 3);
+	int_eq(a->top->num, 3);
+	int_eq(a->bot->num, 2);
+	swap(0);
 	pop_all(a);
-	int_eq(swap(a), 0);
+	swap(a);
 	printf("\n");
 	free(a);
 
@@ -209,43 +209,37 @@ void	test_additional_stack_ops(void)
 	// rotate_up
 	printf("TEST ROTATE UP: ");
 	a = get_stack_strs(strs, 3);
-	//print_stack(a);
 
-	int_eq(rotate_up(a), 1);
-	//print_stack(a);
+	rotate_up(a);
 	int_eq(a->top->num, 2);
 	int_eq(a->bot->num, 1);
 
-	int_eq(rotate_up(a), 1);
-	//print_stack(a);
+	rotate_up(a);
 	int_eq(a->top->num, 3);
 	int_eq(a->bot->num, 2);
 
-	int_eq(rotate_up(a), 1);
-	//print_stack(a);
+	rotate_up(a);
 	int_eq(a->top->num, 1);
 	int_eq(a->top->front->num, 2);
 	int_eq(a->bot->num, 3);
 
 	push(a, 4);
-	//print_stack(a);
 	int_eq(a->top->num, 4);
 	int_eq(a->top->front->num, 1);
 	int_eq(a->bot->back->num, 2);
 	int_eq(a->bot->num, 3);
 
-	int_eq(rotate_up(a), 1);
+	rotate_up(a);
 	int_eq(a->top->num, 1);
 	int_eq(a->top->front->num, 2);
 	int_eq(a->bot->back->num, 3);
 	int_eq(a->bot->num, 4);
 	pop(a);
 	pop(a);
-	//print_stack(a);
 	int_eq(a->top->num, 3);
 	int_eq(a->bot->num, 4);
 
-	int_eq(rotate_up(a), 1);
+	rotate_up(a);
 	int_eq(a->top->num, 4);
 	int_eq(a->bot->num, 3);
 	pop_all(a);
@@ -256,27 +250,27 @@ void	test_additional_stack_ops(void)
 	printf("TEST ROTATE DOWN: ");
 	a = get_stack_strs(strs, 3);
 
-	int_eq(rotate_down(a), 1);
+	rotate_down(a);
 	int_eq(a->top->num, 3);
 	int_eq(a->top->front->num, 1);
 	int_eq(a->bot->num, 2);
 
-	int_eq(rotate_down(a), 1);
+	rotate_down(a);
 	int_eq(a->top->num, 2);
 	int_eq(a->top->front->num, 3);
 	int_eq(a->bot->num, 1);
 
-	int_eq(rotate_down(a), 1);
+	rotate_down(a);
 	int_eq(a->top->num, 1);
 	int_eq(a->top->front->num, 2);
 	int_eq(a->bot->num, 3);
 
 	pop(a);
-	int_eq(rotate_down(a), 1);
+	rotate_down(a);
 	int_eq(a->top->num, 3);
 	int_eq(a->bot->num, 2);
 
-	int_eq(rotate_down(a), 1);
+	rotate_down(a);
 	int_eq(a->top->num, 2);
 	int_eq(a->bot->num, 3);
 
@@ -286,13 +280,13 @@ void	test_additional_stack_ops(void)
 	int_eq(a->bot->num, 3);
 	int_eq((uintptr_t)a->bot->front, 0);
 
-	int_eq(rotate_down(a), 1);
+	rotate_down(a);
 	int_eq(a->top->num, 3);
 	int_eq(a->top->front->num, 1);
 	int_eq(a->bot->num, 2);
 
 	pop(a); pop(a);
-	int_eq(rotate_down(a), 0);
+	rotate_down(a);
 	int_eq(a->top->num, 2);
 	int_eq(a->bot->num, 2);
 	pop(a);
@@ -353,24 +347,24 @@ void	test_push_swap_ops(void)
 	printf("MIXED: ");
 	char *strs[] = {"1", "2", "3"};
 	initialize_ps(strs, 3);
-	t_stack *a = get_stack_ps('a');
-	t_stack *b = get_stack_ps('b');
+	t_ps_stack stack_a = A;
+	t_ps_stack stack_b = B;
+	t_stack *a = get_ps_stack(stack_a);
+	t_stack *b = get_ps_stack(stack_b);
 
-	ra();
-	rra();
 	int_eq(a->top->num, 1);
 	int_eq(a->top->front->num, 2);
 	int_eq(a->bot->num, 3);
 	int_eq((uintptr_t)b->top, 0);
 
-	pb();
-	pb();
+	p(B);
+	p(B);
 	int_eq(a->top->num, 3);
 	int_eq(a->bot->num, 3);
 	int_eq(b->top->num, 2);
 	int_eq(b->bot->num, 1);
 
-	rr();
+	uu();
 	int_eq(a->top->num, 3);
 	int_eq(a->bot->num, 3);
 	int_eq(b->top->num, 1);
@@ -383,25 +377,27 @@ void	test_push_swap_algo(void)
 {
 	printf("-- TEST PUSH SWAP SORTING ALGORITHM --\n");
 	printf("TEST FIND MIN INDEX: ");
+	t_ps_stack a = A;
+	//t_ps_stack b = B;
 	char *strs[] = {"1", "2", "3"};
 	initialize_ps(strs, 3);
-	int_eq(find_min_index(), 0);
+	int_eq(find_min_index(a), 0);
 
-	ra();
-	int_eq(find_min_index(), 2);
+	u(a);
+	int_eq(find_min_index(a), 2);
 
-	ra();
-	int_eq(find_min_index(), 1);
+	u(a);
+	int_eq(find_min_index(a), 1);
 	printf("\n");
 
 	printf("TEST BSORT: ");
-	int_eq(peek_at('a', 0), 3);
-	int_eq(peek_at('a', 1), 1);
-	int_eq(peek_at('a', 2), 2);
+	int_eq(peek_at(a, 0), 3);
+	int_eq(peek_at(a, 1), 1);
+	int_eq(peek_at(a, 2), 2);
 	bsort();
-	int_eq(peek_at('a', 0), 1);
-	int_eq(peek_at('a', 1), 2);
-	int_eq(peek_at('a', 2), 3);
+	int_eq(peek_at(a, 0), 1);
+	int_eq(peek_at(a, 1), 2);
+	int_eq(peek_at(a, 2), 3);
 	free_ps();
 	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 04:05:03 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/15 01:53:06 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/17 01:30:08 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*new_stack(void)
 }
 
 // Return new node being push in to stack s, null if error.
-t_dlist	*push(t_stack *s, int n)
+int	push(t_stack *s, int n)
 {
 	t_dlist	*new_node;
 	t_dlist	*top_node;
@@ -52,7 +52,7 @@ t_dlist	*push(t_stack *s, int n)
 		s->top = new_node;
 	}
 	(s->size)++;
-	return (new_node);
+	return (1);
 }
 
 // Return an interger pop from the stack.
@@ -76,23 +76,15 @@ int	pop(t_stack *s)
 }
 
 // Return number of node being pop from stack s, -1 if error.
-int	pop_all(t_stack *s)
+void	pop_all(t_stack *s)
 {
-	int		pop_count;
-
 	if (s == 0 || s->top == 0)
-		return (0);
-	pop_count = 0;
+		return ;
 	while (s->top)
-	{
 		pop(s);
-		pop_count++;
-	}
-	s->size -= pop_count;
-	return (pop_count);
 }
 
-t_dlist	*get_node_at(t_stack *s, size_t position)
+int	get_int_at(t_stack *s, size_t position)
 {
 	size_t	i;
 	t_dlist	*cur_node;
@@ -108,5 +100,5 @@ t_dlist	*get_node_at(t_stack *s, size_t position)
 	}
 	if (i != position)
 		return (0);
-	return (cur_node);
+	return (cur_node->num);
 }
