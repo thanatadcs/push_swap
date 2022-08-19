@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:14:34 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:57:44 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:16:56 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	d(t_ps_stack stack_name)
 {
+	if (size(stack_name) <= 1)
+		return ;
 	rotate_down(get_ps_stack(stack_name));
 	print_op("rr", stack_name);
 }
@@ -32,6 +34,8 @@ size_t	size(t_ps_stack stack_name)
 
 int	peek_at(t_ps_stack stack_name, size_t i)
 {
+	if (i == size(stack_name) - 1)
+		return (get_ps_stack(stack_name)->bot->num);
 	return (get_int_at(get_ps_stack(stack_name), i));
 }
 
