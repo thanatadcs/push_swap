@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:46:32 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:13:16 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	find_min_index(t_ps_stack stack_name)
 	return (min_index);
 }
 
-int	bsort(void)
+void	simple_sort(void)
 {
 	size_t		min_index;
 	size_t		initial_size_a;
@@ -44,7 +44,7 @@ int	bsort(void)
 	a = A;
 	b = B;
 	if (size(a) <= 1)
-		return (1);
+		return ;
 	initial_size_a = size(a);
 	while (size(b) < initial_size_a)
 	{
@@ -58,5 +58,5 @@ int	bsort(void)
 	}
 	while (size(b) > 0)
 		check_ps_error(p(a));
-	return (1);
+	return ;
 }

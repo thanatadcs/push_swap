@@ -6,7 +6,7 @@
 #    By: tanukool <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 04:05:43 by tanukool          #+#    #+#              #
-#    Updated: 2022/08/17 03:59:02 by tanukool         ###   ########.fr        #
+#    Updated: 2022/08/20 16:14:27 by tanukool         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ NAME = push_swap
 
 LEAKS = leaks --atExit -- 
 
-all: $(NAME)
+all: norm $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf $^ -o $@

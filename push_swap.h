@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 02:56:36 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:49:17 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:13:54 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef enum e_ps_stack {A, B}	t_ps_stack;
 
 // push_swap.c: sorting algorithm
-int		bsort(void);
+void	simple_sort(void);
 size_t	find_min_index(t_ps_stack stack_name);
 
 // push_swap_util1.c: validating input and initializing push swap
