@@ -380,28 +380,74 @@ void	test_push_swap_ops(void)
 void	test_push_swap_algo(void)
 {
 	printf("-- TEST PUSH SWAP SORTING ALGORITHM --\n");
-	printf("TEST FIND MIN INDEX: ");
 	t_ps_stack a = A;
-	//t_ps_stack b = B;
-	char *strs[] = {"1", "2", "3"};
-	initialize_ps(strs, 3);
-	int_eq(find_min_index(a), 0);
+	t_ps_stack b = B;
+	char *strs[] = {"8", "2", "3", "5"};
+	initialize_ps(strs, 4);
+	(void) b;
 
-	u(a);
-	int_eq(find_min_index(a), 2);
-
-	u(a);
-	int_eq(find_min_index(a), 1);
-	printf("\n");
-
-	printf("TEST BSORT: ");
-	int_eq(peek_at(a, 0), 3);
-	int_eq(peek_at(a, 1), 1);
-	int_eq(peek_at(a, 2), 2);
-	bsort();
-	int_eq(peek_at(a, 0), 1);
+	printf("TEST SMART ROTATE: ");
+	int_eq(peek_at(a, 0), 8);
 	int_eq(peek_at(a, 1), 2);
 	int_eq(peek_at(a, 2), 3);
+	int_eq(peek_at(a, 3), 5);
+
+	srot(a, 0);
+	int_eq(peek_at(a, 0), 8);
+	int_eq(peek_at(a, 1), 2);
+	int_eq(peek_at(a, 2), 3);
+	int_eq(peek_at(a, 3), 5);
+
+	srot(a, 1);
+	int_eq(peek_at(a, 0), 2);
+	int_eq(peek_at(a, 1), 3);
+	int_eq(peek_at(a, 2), 5);
+	int_eq(peek_at(a, 3), 8);
+
+	srot(a, 2);
+	int_eq(peek_at(a, 0), 5);
+	int_eq(peek_at(a, 1), 8);
+	int_eq(peek_at(a, 2), 2);
+	int_eq(peek_at(a, 3), 3);
+
+	srot(a, 3);
+	int_eq(peek_at(a, 0), 3);
+	int_eq(peek_at(a, 1), 5);
+	int_eq(peek_at(a, 2), 8);
+	int_eq(peek_at(a, 3), 2);
+
+	srot(a, 1);
+	int_eq(peek_at(a, 0), 5);
+	int_eq(peek_at(a, 1), 8);
+	int_eq(peek_at(a, 2), 2);
+	int_eq(peek_at(a, 3), 3);
+	printf("\n");
+
+	printf("TEST COST A: ");
+	int_eq(cost_a(4), 0);
+	printf("\n");
+
+	printf("TEST LOWEST MOVE: ");
+	p(b);
+	d(a);
+	p(b);
+	int_eq(peek_at(a, 0), 8);
+	int_eq(peek_at(a, 1), 2);
+	int_eq(peek_at(b, 0), 3);
+	int_eq(peek_at(b, 1), 5);
+
+	lowest_move();
+	int_eq(peek_at(a, 0), 3);
+	int_eq(peek_at(a, 1), 8);
+	int_eq(peek_at(a, 2), 2);
+	int_eq(peek_at(b, 0), 5);
+
+	lowest_move();
+	int_eq(peek_at(a, 0), 5);
+	int_eq(peek_at(a, 1), 8);
+	int_eq(peek_at(a, 2), 2);
+	int_eq(peek_at(a, 3), 3);
+
 	free_ps();
 	printf("\n");
 }
@@ -410,7 +456,7 @@ int	main(void)
 {
 	//test_basic_stack_ops();
 	//test_additional_stack_ops();
-	test_push_swap_utils();
+	//test_push_swap_utils();
 	//test_push_swap_ops();
-	//test_push_swap_algo();
+	test_push_swap_algo();
 }
