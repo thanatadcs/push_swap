@@ -6,49 +6,13 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/21 16:06:50 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:54:15 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-int	find_max_element(t_ps_stack stack_name)
-{
-	int		max;
-	int		n;
-	size_t	i;
 
-	max = INT_MIN;
-	i = 0;
-	while (i < size(stack_name))
-	{
-		n = peek_at(stack_name, i);
-		if (n > max)
-			max = n;
-		i++;
-	}
-	return (max);
-}
-
-int	find_min_element(t_ps_stack stack_name)
-{
-	int		min;
-	int		n;
-	size_t	i;
-
-	min = INT_MAX;
-	i = 0;
-	while (i < size(stack_name))
-	{
-		n = peek_at(stack_name, i);
-		if (n < min)
-			min = n;
-		i++;
-	}
-	return (min);
-}
-
-ssize_t	cost_a(int n)
+size_t	cost_a(int n)
 {
 	size_t	ai;
 
@@ -112,8 +76,9 @@ void	lowest_move(void)
 
 void	gsort(void)
 {
-	int	max;
-	int	min;
+	int		max;
+	int		min;
+	size_t	ai;
 
 	max = find_max_element(A);
 	min = find_min_element(A);
@@ -125,53 +90,8 @@ void	gsort(void)
 	}
 	while (size(B) > 0)
 		lowest_move();
-}
-
-size_t	find_min_index(t_ps_stack stack_name)
-{
-	int		min;
-	int		n;
-	size_t	min_index;
-	size_t	i;
-
-	min = INT_MAX;
-	i = 0;
-	while (i < size(stack_name))
-	{
-		n = peek_at(stack_name, i);
-		if (n < min)
-		{
-			min = n;
-			min_index = i;
-		}
-		i++;
-	}
-	return (min_index);
-}
-
-void	simple_sort(void)
-{
-	size_t		min_index;
-	size_t		initial_size_a;
-	t_ps_stack	a;
-	t_ps_stack	b;
-
-	a = A;
-	b = B;
-	if (size(a) <= 1)
-		return ;
-	initial_size_a = size(a);
-	while (size(b) < initial_size_a)
-	{
-		min_index = find_min_index(a);
-		while (min_index)
-		{
-			u(a);
-			min_index--;
-		}
-		check_ps_error(p(b));
-	}
-	while (size(b) > 0)
-		check_ps_error(p(a));
-	return ;
+	ai = 0;
+	while (peek_at(A, ai) != min)
+		ai++;
+	srot(A, ai);
 }
