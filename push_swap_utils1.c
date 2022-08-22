@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 02:55:06 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/17 03:01:27 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/22 22:49:59 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ t_stack	*initialize_ps(char **strs, int n)
 
 	snb = B;
 	if (get_ps_stack(snb) == 0)
-		return (0);
+		check_ps_error(1);
 	if (a == 0)
 	{
 		a = get_stack_strs(strs, n);
 		if (a == 0)
-			return (0);
+			check_ps_error(1);
 	}
 	return (a);
 }

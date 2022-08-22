@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 02:56:36 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/21 20:55:06 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/22 22:42:22 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_stack	*get_ps_stack(t_ps_stack stack_name);
 // push_swap_util2.c: push swap operations 1
 void	s(t_ps_stack stack_name);
 void	ss(void);
-int		p(t_ps_stack stack_name);
+void	p(t_ps_stack stack_name);
 void	u(t_ps_stack stack_name);
 void	uu(void);
 
