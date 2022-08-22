@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:14:34 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/19 19:16:56 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 00:22:15 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	d(t_ps_stack stack_name)
 
 void	dd(void)
 {
-	d(A);
-	d(B);
+	rotate_down(get_ps_stack(A));
+	rotate_down(get_ps_stack(B));
 	ft_printf("rrr\n");
 }
 

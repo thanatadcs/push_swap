@@ -392,31 +392,31 @@ void	test_push_swap_algo(void)
 	int_eq(peek_at(a, 2), 3);
 	int_eq(peek_at(a, 3), 5);
 
-	srot(a, 0);
+	srot(0, 0);
 	int_eq(peek_at(a, 0), 8);
 	int_eq(peek_at(a, 1), 2);
 	int_eq(peek_at(a, 2), 3);
 	int_eq(peek_at(a, 3), 5);
 
-	srot(a, 1);
+	srot(1, 0);
 	int_eq(peek_at(a, 0), 2);
 	int_eq(peek_at(a, 1), 3);
 	int_eq(peek_at(a, 2), 5);
 	int_eq(peek_at(a, 3), 8);
 
-	srot(a, 2);
+	srot(2, 0);
 	int_eq(peek_at(a, 0), 5);
 	int_eq(peek_at(a, 1), 8);
 	int_eq(peek_at(a, 2), 2);
 	int_eq(peek_at(a, 3), 3);
 
-	srot(a, 3);
+	srot(3, 0);
 	int_eq(peek_at(a, 0), 3);
 	int_eq(peek_at(a, 1), 5);
 	int_eq(peek_at(a, 2), 8);
 	int_eq(peek_at(a, 3), 2);
 
-	srot(a, 1);
+	srot(1, 0);
 	int_eq(peek_at(a, 0), 5);
 	int_eq(peek_at(a, 1), 8);
 	int_eq(peek_at(a, 2), 2);
@@ -447,6 +447,62 @@ void	test_push_swap_algo(void)
 	int_eq(peek_at(a, 1), 8);
 	int_eq(peek_at(a, 2), 2);
 	int_eq(peek_at(a, 3), 3);
+
+	printf("TEST SROT AB\n");
+	p(b);
+	p(b);
+	int_eq(peek_at(a, 0), 2);
+	int_eq(peek_at(a, 1), 3);
+	int_eq(peek_at(b, 0), 8);
+	int_eq(peek_at(b, 1), 5);
+
+	srot(0, 0);
+	int_eq(peek_at(a, 0), 2);
+	int_eq(peek_at(a, 1), 3);
+	int_eq(peek_at(b, 0), 8);
+	int_eq(peek_at(b, 1), 5);
+
+	srot(1, 1);
+	int_eq(peek_at(a, 0), 3);
+	int_eq(peek_at(a, 1), 2);
+	int_eq(peek_at(b, 0), 5);
+	int_eq(peek_at(b, 1), 8);
+
+	push(get_ps_stack(a), 5);
+	push(get_ps_stack(a), 4);
+	push(get_ps_stack(b), 6);
+	push(get_ps_stack(b), 7);
+	int_eq(peek_at(a, 0), 4);
+	int_eq(peek_at(a, 1), 5);
+	int_eq(peek_at(a, 2), 3);
+	int_eq(peek_at(a, 3), 2);
+	int_eq(peek_at(b, 0), 7);
+	int_eq(peek_at(b, 1), 6);
+	int_eq(peek_at(b, 2), 5);
+	int_eq(peek_at(b, 3), 8);
+
+	srot(2, 2);
+	int_eq(peek_at(a, 0), 3);
+	int_eq(peek_at(a, 1), 2);
+	int_eq(peek_at(a, 2), 4);
+	int_eq(peek_at(a, 3), 5);
+	int_eq(peek_at(b, 0), 5);
+	int_eq(peek_at(b, 1), 8);
+	int_eq(peek_at(b, 2), 7);
+	int_eq(peek_at(b, 3), 6);
+	print_stack(get_ps_stack(a));
+	print_stack(get_ps_stack(b));
+	srot(3, 3);
+	print_stack(get_ps_stack(a));
+	print_stack(get_ps_stack(b));
+	int_eq(peek_at(a, 0), 5);
+	int_eq(peek_at(a, 1), 3);
+	int_eq(peek_at(a, 2), 2);
+	int_eq(peek_at(a, 3), 4);
+	int_eq(peek_at(b, 0), 6);
+	int_eq(peek_at(b, 1), 5);
+	int_eq(peek_at(b, 2), 8);
+	int_eq(peek_at(b, 3), 7);
 
 	free_ps();
 	printf("\n");

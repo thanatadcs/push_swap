@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/21 20:54:15 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 00:16:56 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,52 @@ size_t	cost_a(int n)
 	return (0);
 }
 
-void	srot(t_ps_stack stack_name, size_t i)
+void	srot_ab(size_t ai, size_t bi, \
+void (*fa)(t_ps_stack), void (*fb)(t_ps_stack))
 {
-	void	(*f)(t_ps_stack);
+	void	(*f)(void);
 
-	if (i > size(stack_name))
+	f = uu;
+	if (fa == d)
+		f = dd;
+	while (fa == fb && ai > 0 && bi > 0)
+	{
+		f();
+		ai--;
+		bi--;
+	}
+	while (ai > 0)
+	{
+		fa(A);
+		ai--;
+	}
+	while (bi > 0)
+	{
+		fb(B);
+		bi--;
+	}
+}
+
+void	srot(size_t ai, size_t bi)
+{
+	void	(*fa)(t_ps_stack);
+	void	(*fb)(t_ps_stack);
+
+	if (ai > size(A) || bi > size(B))
 		return ;
-	f = u;
-	if (i > size(stack_name) / 2)
+	fa = u;
+	fb = u;
+	if (ai > size(A) / 2)
 	{
-		i = size(stack_name) - i;
-		f = d;
+		ai = size(A) - ai;
+		fa = d;
 	}
-	while (i > 0)
+	if (bi > size(B) / 2)
 	{
-		f(stack_name);
-		i--;
+		bi = size(B) - bi;
+		fb = d;
 	}
+	srot_ab(ai, bi, fa, fb);
 }
 
 void	lowest_move(void)
@@ -69,8 +98,7 @@ void	lowest_move(void)
 		}
 		bi++;
 	}
-	srot(A, mi[0]);
-	srot(B, mi[1]);
+	srot(mi[0], mi[1]);
 	p(A);
 }
 
@@ -93,5 +121,5 @@ void	gsort(void)
 	ai = 0;
 	while (peek_at(A, ai) != min)
 		ai++;
-	srot(A, ai);
+	srot(ai, 0);
 }
