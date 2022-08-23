@@ -6,13 +6,9 @@
 #    By: tanukool <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/13 04:05:43 by tanukool          #+#    #+#              #
-#    Updated: 2022/08/23 14:05:21 by tanukool         ###   ########.fr        #
+#    Updated: 2022/08/23 14:39:22 by tanukool         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-GREEN = "\033[0;32m"
-RED = "\033[0;31m"
-RESET = "\033[0m"
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I. -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)
@@ -32,12 +28,12 @@ FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 NAME = push_swap
 BNAME = checker 
 
-all: norm $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf $^ -o $@
 
-bonus: norm $(BNAME)
+bonus: $(BNAME)
 
 $(BNAME): $(OBJ_BONUS) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf $^ -o $@
@@ -47,9 +43,6 @@ $(LIBFT):
 
 $(FT_PRINTF):
 	make -C $(FT_PRINTF_DIR)
-
-norm:
-	norminette $(SRC) $(SRC_BONUS) push_swap.h stack.h push_swap_bonus.h stack_bonus.h $(LIBFT_DIR)/*.c $(LIBFT_DIR)/*.h 1> /dev/null && echo NORM: $(GREEN)PASS$(RESET) || echo NORM: $(RED)FAIL$(RESET) && norminette $(SRC) $(HEADER) $(LIBFT_DIR)/*.c $(LIBFT_DIR)/*.h | awk '/Error/'
 
 clean:
 	make fclean -C $(LIBFT_DIR)
@@ -62,4 +55,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re
