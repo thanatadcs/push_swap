@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:38:43 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/21 20:51:46 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 10:00:44 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ int	find_min_element(t_ps_stack stack_name)
 		i++;
 	}
 	return (min);
+}
+
+void	three_sort(void)
+{
+	int	max;
+
+	max = find_max_element(A);
+	if (peek_at(A, 0) == max)
+		u(A);
+	if (peek_at(A, 1) == max)
+		d(A);
+	if (peek_at(A, 0) > peek_at(A, 1))
+		s(A);
 }

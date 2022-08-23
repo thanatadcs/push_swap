@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 03:10:26 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/20 16:31:59 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 09:56:13 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	main(int ac, char **av)
 			write(2, "Error\n", 6);
 			return (EXIT_FAILURE);
 		}
-		gsort();
+		if (ac - 1 == 3)
+			three_sort();
+		else
+			gsort();
 		free_ps();
 	}
 }
