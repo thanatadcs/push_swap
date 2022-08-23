@@ -6,13 +6,13 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/23 10:21:57 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 11:01:21 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t	cost_a(int n)
+size_t	cost_a(int n)
 {
 	size_t	ai;
 
@@ -26,7 +26,7 @@ static size_t	cost_a(int n)
 	return (0);
 }
 
-static void	srot_ab(size_t ai, size_t bi, \
+void	srot_ab(size_t ai, size_t bi, \
 void (*fa)(t_ps_stack), void (*fb)(t_ps_stack))
 {
 	void	(*f)(void);
@@ -52,7 +52,7 @@ void (*fa)(t_ps_stack), void (*fb)(t_ps_stack))
 	}
 }
 
-static void	srot(size_t ai, size_t bi)
+void	srot(size_t ai, size_t bi)
 {
 	void	(*fa)(t_ps_stack);
 	void	(*fb)(t_ps_stack);
@@ -74,7 +74,7 @@ static void	srot(size_t ai, size_t bi)
 	srot_ab(ai, bi, fa, fb);
 }
 
-static void	lowest_move(void)
+void	lowest_move(void)
 {
 	size_t	ai;
 	size_t	bi;
