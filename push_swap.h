@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 02:56:36 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/23 09:54:38 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 10:18:27 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ int		find_max_element(t_ps_stack stack_name);
 void	check_ps_error(int is_success);
 void	print_op(char *op_str, t_ps_stack stack_name);
 void	three_sort(void);
+
+// push_swap_util5.c: additional utility for optimization
+int	is_sorted(t_ps_stack stack_name);
 
 #endif

@@ -373,6 +373,11 @@ void	test_push_swap_ops(void)
 	int_eq(a->bot->num, 3);
 	int_eq(b->top->num, 1);
 	int_eq(b->bot->num, 2);
+
+	pop(get_ps_stack(A));
+	printf("-- TEST IS_SORTED ==\n");
+	int_eq(is_sorted(A), 1);
+	int_eq(is_sorted(B), 1);
 	free_ps();
 	printf("\n");
 }
@@ -392,6 +397,7 @@ void	test_push_swap_algo(void)
 	int_eq(peek_at(a, 2), 3);
 	int_eq(peek_at(a, 3), 5);
 
+	/*
 	srot(0, 0);
 	int_eq(peek_at(a, 0), 8);
 	int_eq(peek_at(a, 1), 2);
@@ -506,6 +512,7 @@ void	test_push_swap_algo(void)
 
 	free_ps();
 	printf("\n");
+	*/
 }
 
 int	main(void)
@@ -513,6 +520,6 @@ int	main(void)
 	//test_basic_stack_ops();
 	//test_additional_stack_ops();
 	//test_push_swap_utils();
-	//test_push_swap_ops();
-	test_push_swap_algo();
+	test_push_swap_ops();
+	//test_push_swap_algo();
 }

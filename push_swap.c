@@ -6,7 +6,7 @@
 /*   By: tanukool <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:26:22 by tanukool          #+#    #+#             */
-/*   Updated: 2022/08/23 09:47:35 by tanukool         ###   ########.fr       */
+/*   Updated: 2022/08/23 10:21:57 by tanukool         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void	gsort(void)
 	int		min;
 	size_t	ai;
 
+	if (is_sorted(A))
+		return ;
 	max = find_max_element(A);
 	min = find_min_element(A);
 	while (size(A) > 2)
